@@ -1,0 +1,84 @@
+.CreateOrEditTest {
+  display: flex;
+  flex-direction: column;
+  width: 80%;
+  margin: 0 auto;
+  font-family: "Monotype Corsiva";
+}
+
+.testName {
+  margin: auto;
+  margin-top: 20px;
+  height: 50px;
+  width: 100%;
+  text-align: center;
+  font-size: 3em;
+  border-radius: 5px;
+  font-family: inherit;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.questionBlockVarient {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  font-family: inherit;
+
+  margin: auto;
+  margin-top: 20px;
+}
+
+.questionBlockVarient .divQuestionBlockNumber {
+  display: flex;
+  flex: 0 1 auto;
+  min-width: 100px;
+  background-color: rgb(255, 255, 158);
+  border-radius: 5px;
+  font-family: inherit;
+}
+
+.questionBlockVarient .divQuestionBlockNumber .questionBlockNumber {
+  text-align: center;
+  font-size: 5em;
+  color: black;
+  display: block;
+  margin: auto;
+  font-family: inherit;
+}
+
+.questionBlockVarient .CreateQuestionBlock {
+  flex: 1 5 100%;
+  min-width: 100px;
+  width: 100%;
+  font-family: inherit;
+}
+
+.questionBlockVarient .deleteQuestionBlockBtn {
+  flex: 0 1 auto;
+  min-width: 100px;
+
+  background-color: rgb(255, 110, 110);
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  outline: none;
+  /* margin-left: 20px; */
+  font-size: 1.5em;
+  font-family: inherit;
+}
+
+.finishBtn {
+  margin-top: 20px;
+  margin-bottom: 20px;
+
+  width: 100%;
+  height: 50px;
+  background-color: rgb(0, 132, 255);
+  border: none;
+  cursor: pointer;
+  outline: none;
+  border-radius: 5px;
+  font-size: 2em;
+  font-family: inherit;
+}

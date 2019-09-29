@@ -1,0 +1,68 @@
+.App {
+  display: flex;
+  flex-direction: column;
+  /* justify-content: space-between; */
+
+  background-color: rgb(126, 194, 217);
+  min-height: 100vh;
+
+  font-family: "Monotype Corsiva";
+}
+
+.App .testsMenu {
+  margin: auto;
+
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-content: space-between;
+  font-family: inherit;
+
+  padding: 10px;
+  width: 80%;
+}
+
+.App .testsMenu {
+  margin: auto;
+
+  display: grid;
+  grid-auto-rows: 50% 50%;
+  grid-template-columns: 50% 50%;
+
+  padding: 10px;
+  width: 80%;
+  height: 30vh;
+  font-family: inherit;
+}
+
+.App .testsMenu .choiceBtn {
+  width: 90%;
+  height: 10vh;
+  justify-self: center;
+  align-self: center;
+
+  background-color: rgb(173, 154, 108);
+  border: none;
+  cursor: pointer;
+  outline: none;
+  border-radius: 5px;
+
+  font-size: 2em;
+  font-family: inherit;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.backBtn {
+  margin: auto auto 10px;
+  width: 80%;
+  height: 50px;
+
+  background-color: rgb(173, 154, 108);
+  border: none;
+  cursor: pointer;
+  outline: none;
+  border-radius: 5px;
+  font-size: 2em;
+  font-family: inherit;
+}

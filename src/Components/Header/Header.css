@@ -1,0 +1,39 @@
+.header {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+
+  margin: 0;
+  min-height: 50px;
+  /* height: 6vh; */
+  background-color: RGB(32, 136, 171);
+  font-size: 1.5em;
+}
+
+.header .logo p {
+  margin: 5px;
+}
+
+.header .appName p {
+  margin: 5px;
+}
+
+.header .userAcc {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  min-width: 10%;
+}
+
+.header .userAcc .username {
+  display: inline-block;
+  margin: 5px;
+  text-align: center;
+}
+
+.header .userAcc .entranceBtn,
+.header .userAcc .exitBtn {
+  font-family: inherit;
+  margin: auto 0;
+  font-size: 1em;
+}

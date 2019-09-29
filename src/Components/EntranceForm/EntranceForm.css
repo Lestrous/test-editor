@@ -1,0 +1,60 @@
+.EntranceForm {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  flex-wrap: wrap;
+
+  width: 1000px;
+  height: 600px;
+  margin: auto;
+  background-color: rgb(92, 99, 67);
+  font-size: 1em;
+  font-family: inherit;
+}
+
+.EntranceForm button {
+  box-sizing: border-box;
+  width: 50%;
+  height: 50px;
+  font-size: 2em;
+  font-family: inherit;
+}
+
+.RegistrationForm,
+.LoginForm {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+
+  width: 100%;
+  height: 550px;
+}
+
+.RegistrationForm h3,
+.LoginForm h3 {
+  margin-top: 0;
+  margin-bottom: 0;
+  font-size: 2em;
+}
+
+.EntranceForm .LoginForm label p {
+  font-family: inherit;
+  font-size: 1.5em;
+}
+
+.EntranceForm .LoginForm input[type=submit],
+.EntranceForm .RegistrationForm input[type=submit] {
+  font-size: 1.5em;
+  font-family: inherit;
+}
+
+.RegistrationForm .Properties,
+.LoginForm .Properties {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+
+  width: 80%;
+}
