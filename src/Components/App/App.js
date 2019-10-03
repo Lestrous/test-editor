@@ -13,7 +13,7 @@ class App extends Component {
     sessionStorage.setItem("currentUser", localStorage.getItem("userToRemember") ? localStorage.getItem("userToRemember") : "");
 
     this.state = {
-      page: localStorage.getItem("userToRemember") !== "" ? "MainPage" : "Entrance",
+      page: localStorage.getItem("userToRemember") "" ? "MainPage" : "Entrance",
       nextPage: "",
       data: []
     };
