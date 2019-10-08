@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import "./App.css";
+// import { all } from '../../scripts/script.js';
 import EntranceForm from "../EntranceForm/EntranceForm.js";
 import Header from "../Header/Header.js";
 import PassTest from "../PassTest/PassTest.js";
@@ -13,7 +13,7 @@ class App extends Component {
     sessionStorage.setItem("currentUser", localStorage.getItem("userToRemember") ? localStorage.getItem("userToRemember") : "");
 
     this.state = {
-      page: localStorage.getItem("userToRemember") "" ? "MainPage" : "Entrance",
+      page: localStorage.getItem("userToRemember") ? "MainPage" : "Entrance",
       nextPage: "",
       data: []
     };
@@ -25,7 +25,6 @@ class App extends Component {
       this.handlePassTestPage = this.handlePassTestPage.bind(this);
       this.handleCreateTestPage = this.handleCreateTestPage.bind(this);
       this.handleEditTestPage = this.handleEditTestPage.bind(this);
-      this.handleDeleteTestPage = this.handleDeleteTestPage.bind(this);
       this.handleChooseTestPage = this.handleChooseTestPage.bind(this);
       this.handleChosenTest = this.handleChosenTest.bind(this);
       this.handleLogout = this.handleLogout.bind(this);
@@ -59,10 +58,6 @@ class App extends Component {
 
   handleEditTestPage(data) {
     this.setState({ page: "EditTest", data: data });
-  }
-
-  handleDeleteTestPage() {
-    this.setState({ page: "DeleteTest" });
   }
 
   handleChooseTestPage(nextPage) {
@@ -113,6 +108,14 @@ class App extends Component {
     localStorage.setItem(username, serialUserData);
   }
 
+  componentDidMount () {
+    // let viewportWidth = window.innerWidth;	// ширина страницы
+    // console.log("width: " + viewportWidth);
+
+    // jQuery
+    // all();
+  }
+
   render() {
     let page = this.state.page;
 
@@ -132,22 +135,28 @@ class App extends Component {
     switch (page) {
       case "Entrance":
         return (
-          <div className="App">
+          <div className="page">
+           <div className="fixed-container">
             <Header userState="NotLoggedIn" />
             <EntranceForm handleSubmit={this.handleOnMainPage}/>
+            </div>
           </div>
         );
         break;
 
       case "MainPage":
         return (
-          <div className="App">
-            <Header userState="LoggedIn" username={username} handleLogout={this.handleLogout} />
-            <div className="testsMenu">
-              <button className="choiceBtn" disabled={testsExistence ? false : true} onClick={this.handleChooseTestPage.bind(this, "PassTest")}>Пройти тесты</button>
-              <button className="choiceBtn" onClick={this.handleCreateTestPage}>Создать тесты</button>
-              <button className="choiceBtn" disabled={testsExistence ? false : true} onClick={this.handleChooseTestPage.bind(this, "EditTest")}>Редактировать тесты</button>
-              <button className="choiceBtn" disabled={testsExistence ? false : true} onClick={this.handleChooseTestPage.bind(this, "DeleteTest")}>Удалить тесты</button>
+          <div className="page">
+            <div className="fixed-container">
+              <Header userState="LoggedIn" username={username} handleLogout={this.handleLogout} handleLogoBtn={this.handleOnMainPage} />
+              <div className="page__description">TestTest&nbsp;&mdash; удобный сервис для создания тестов и&nbsp;опросов.</div>
+              <div className="page__description">Создавай свои или проходи готовые!</div>
+              <div className="testsMenu">
+                <button className="button choiceBtn choiceBtn_style_blue" disabled={!testsExistence} onClick={this.handleChooseTestPage.bind(this, "PassTest")}>Пройти тесты</button>
+                <button className="button choiceBtn choiceBtn_style_yellow" onClick={this.handleCreateTestPage}>Создать тест</button>
+                <button className="button choiceBtn choiceBtn_style_pink" disabled={!testsExistence} onClick={this.handleChooseTestPage.bind(this, "EditTest")}>Редактировать тесты</button>
+                <button className="button choiceBtn choiceBtn_style_grey" disabled={!testsExistence} onClick={this.handleChooseTestPage.bind(this, "DeleteTest")}>Удалить тесты</button>
+              </div>
             </div>
           </div>
         );
@@ -155,50 +164,52 @@ class App extends Component {
 
       case "ChooseTest":
         return (
-          <div className="App">
-            <Header userState="LoggedIn" username={username} handleLogout={this.handleLogout} />
-            <ChooseTest nextPage={this.state.nextPage} tests={testNames} handleChosenTest={this.handleChosenTest} />
-            <button className="backBtn" onClick={this.handleOnMainPage}>Назад</button>
+          <div className="page">
+            <div className="fixed-container">
+              <Header userState="LoggedIn" username={username} handleLogout={this.handleLogout} handleLogoBtn={this.handleOnMainPage} />
+              <div className="fixed-container">
+              <div className="page__description">TestTest&nbsp;&mdash; удобный сервис для создания тестов и&nbsp;опросов.</div>
+              <div className="page__description">Создавай свои или проходи готовые!</div>
+                <ChooseTest nextPage={this.state.nextPage} tests={testNames} handleChosenTest={this.handleChosenTest} />
+                <button className="button backBtn" onClick={this.handleOnMainPage}>Назад</button>
+              </div>
+            </div>
           </div>
         );
         break;
 
       case "PassTest":
         return (
-          <div className="App">
-            <Header userState="LoggedIn" username={username} handleLogout={this.handleLogout} />
-            <PassTest test={this.state.data} back={this.handleOnMainPage} />
-            <button className="backBtn" onClick={this.handleChooseTestPage.bind(this, "PassTest")}>Назад</button>
+          <div className="page">
+            <div className="fixed-container">
+              <Header userState="LoggedIn" username={username} handleLogout={this.handleLogout} handleLogoBtn={this.handleOnMainPage} />
+              <PassTest test={this.state.data} back={this.handleOnMainPage} />
+              <button className="button backBtn" onClick={this.handleChooseTestPage.bind(this, "PassTest")}>Назад</button>
+            </div>
           </div>
         );
         break;
 
       case "CreateTest":
         return (
-          <div className="App">
-            <Header userState="LoggedIn" username={username} handleLogout={this.handleLogout}/>
-            <CreateOrEditTest state="CreateTest" createTest={this.createTest} back={this.handleOnMainPage} />
-            <button className="backBtn" onClick={this.handleOnMainPage}>Назад</button>
+          <div className="page">
+            <div className="fixed-container">
+              <Header userState="LoggedIn" username={username} handleLogout={this.handleLogout} handleLogoBtn={this.handleOnMainPage} />
+              <CreateOrEditTest state="CreateTest" createTest={this.createTest} back={this.handleOnMainPage} />
+              <button className="button backBtn" onClick={this.handleOnMainPage}>Назад</button>
+            </div>
           </div>
         );
         break;
 
       case "EditTest":
         return (
-          <div className="App">
-            <Header userState="LoggedIn" username={username} handleLogout={this.handleLogout} />
-            <CreateOrEditTest state="EditTest" test={this.state.data} editTest={this.editTest} back={this.handleOnMainPage} />
-            <button className="backBtn" onClick={this.handleChooseTestPage.bind(this, "EditTest")}>Назад</button>
-          </div>
-        );
-        break;
-
-      case "DeleteTest":
-        return (
-          <div className="App">
-            <Header userState="LoggedIn" username={username} handleLogout={this.handleLogout} />
-            <h1>Delete Test Page</h1>
-            <button className="backBtn" onClick={this.handleChooseTestPage.bind(this, "DeleteTest")}>Назад</button>
+          <div className="page">
+            <div className="fixed-container">
+              <Header userState="LoggedIn" username={username} handleLogout={this.handleLogout} handleLogoBtn={this.handleOnMainPage} />
+              <CreateOrEditTest state="EditTest" test={this.state.data} editTest={this.editTest} back={this.handleOnMainPage} />
+              <button className="button backBtn" onClick={this.handleChooseTestPage.bind(this, "EditTest")}>Назад</button>
+            </div>
           </div>
         );
         break;

@@ -1,0 +1,50 @@
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 70px;
+}
+
+.page__header {
+  height: 100px;
+}
+
+.logo {
+  width: 51px;
+  height: 51px;
+  background: url($img_dir + "Logo.svg") left center no-repeat;
+}
+
+.appName {
+  flex-grow: 2;
+  padding-left: 41%;
+  font-size: 30px;
+  font-weight: 800;
+}
+
+.userAccount {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.header__username {
+  width: 180px;
+  margin-right: 20px;
+  font-weight: 600;
+  text-align: center;
+  color: $blue;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.header__button {
+  width: 75px;
+  font-weight: 600;
+  overflow: unset;
+  text-overflow: unset;
+
+  &:hover {
+    text-decoration: underline;
+  }
+}

@@ -1,0 +1,49 @@
+.AddQuestionBlock {
+  display: inline-block;
+}
+
+.AddQuestionBlockBtn {
+  margin-right: 80px;
+}
+
+.QuestionBlockType__inner {
+  position: relative;
+  width: 100%;
+  height: 68px;
+  margin-bottom: 60px;
+
+  &::after {
+    content: '';
+    position: absolute;
+    display: block;
+    width: 68px;
+    height: 68px;
+    top: 0;
+    right: 0;
+    pointer-events: none;
+    border-bottom-right-radius: 5px;
+    border-bottom-left-radius: 5px;
+    background: url($img_dir + "arrow-white.png") 45% center no-repeat,
+                $blue;
+    transform: rotate(-90deg);
+    z-index: 10;
+  }
+}
+
+.QuestionBlockType {
+  width: 100%;
+  height: 68px;
+  padding: 0 20px;
+  border: none;
+  border-radius: 5px;
+  @include box-shadow;
+}
+
+.CancelQuestionBlockBtn {
+  display: inline-block;
+  margin-right: 80px;
+}
+
+.CreateQuestionBlockBtn {
+  display: inline-block;
+}

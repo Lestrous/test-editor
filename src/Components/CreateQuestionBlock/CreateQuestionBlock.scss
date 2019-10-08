@@ -1,0 +1,81 @@
+.createQuestionBlock {
+  position: relative;
+  width: 100%;
+}
+
+.deleteQuestionBlockBtn {
+  position: absolute;
+  display: block;
+  width: 21px;
+  height: 26px;
+  top: 21px;
+  right: 25px;
+  background: url($img_dir + "delete-question.png") center no-repeat;
+
+  &:hover,
+  &:active {
+  background: url($img_dir + "delete-question-hover.png") center no-repeat;
+  }
+}
+
+.createQuestionBlock__question {
+  width: 100%;
+  height: 68px;
+  margin-bottom: 20px;
+  padding: 0 20px;
+  border: none;
+  border-radius: 5px;
+  @include box-shadow;
+}
+
+.varient {
+  position: relative;
+  display: flex;
+  align-items: center;
+  margin: 5px 0;
+}
+
+.varient__number {
+  display: inline-block;
+  width: 42px;
+  padding: 0 10px;
+  text-align: center;
+}
+
+.varient__radio,
+.varient__checkbox {
+  width: 25px;
+  height: 25px;
+  margin-right: 20px;
+}
+
+.varient__answer_item {
+  width: 100%;
+  margin-bottom: 16px;
+}
+
+.varient__text {
+  width: 100%;
+  height: 68px;
+  padding: 0 20px;
+  border: none;
+  border-radius: 5px;
+  @include box-shadow;
+}
+
+.varient__button {
+  position: absolute;
+  width: 18px;
+  height: 18px;
+  top: 25px;
+  right: 27px;
+}
+
+.button_style_delete_varient {
+  background: url($img_dir + 'delete.png') center no-repeat;
+
+  &:hover,
+  &:active {
+    background: url($img_dir + 'delete-hover.png') center no-repeat;
+  }
+}

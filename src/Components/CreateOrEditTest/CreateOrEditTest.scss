@@ -1,0 +1,44 @@
+.CreateOrEditTest {
+  margin-bottom: 70px;
+}
+
+.CreateOrEditTest__description {
+  margin-bottom: 10px;
+}
+
+.testNameCreation {
+  height: 68px;
+  width: 100%;
+  margin-bottom: 50px;
+  padding: 0 20px;
+  border-radius: 5px;
+  border: none;
+  font-size: 30px;
+  @include box-shadow;
+}
+
+.questions {
+  & .questionBlockVarient:last-of-type {
+    border-bottom: none;
+  }
+}
+
+.questionBlockVarient {
+  width: 100%;
+  padding-bottom: 25px;
+  margin-bottom: 25px;
+  border-bottom: 1px solid $grey;
+}
+
+.QuestionBlockNumber {
+  display: inline-block;
+  margin: 0 30px 10px 0;
+}
+
+.finishBtn {
+  display: inline-block;
+}
+
+.not-activeBtn {
+  display: none;
+}

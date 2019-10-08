@@ -1,5 +1,4 @@
 import React, { Component } from "react";
-import "./ChooseTest.css";
 
 class ChooseTest extends Component {
   constructor(props) {
@@ -21,9 +20,10 @@ class ChooseTest extends Component {
 
   testVarients() {
     return this.state.tests.map((elem, i) =>
-       <div key={Math.random()} className="testVarient">
-        <button className="chooseTestBtn" onClick={this.handleChooseTestBtn.bind(this, elem, i)}>{elem}</button>
-       </div>
+       <button key={Math.random()} className="button tests__item" onClick={this.handleChooseTestBtn.bind(this, elem, i)}>
+         <div className="tests__img"></div>
+         <div className="tests__text">{elem}</div>
+       </button>
     )
   }
 
@@ -53,8 +53,7 @@ class ChooseTest extends Component {
   render() {
     return (
       <div className="ChooseTest">
-        <h1>Выберите Тест</h1>
-        <div className="tests">
+        <div className="tests ChooseTest__tests">
           {this.testVarients()}
         </div>
       </div>

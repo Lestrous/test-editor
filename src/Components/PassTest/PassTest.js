@@ -1,5 +1,4 @@
 import React, { Component } from "react";
-import "./PassTest.css";
 import QuestionBlock from "../QuestionBlock/QuestionBlock";
 
 class PassTest extends Component {
@@ -23,9 +22,7 @@ class PassTest extends Component {
   QuestionBlockVarients() {
     return this.state.test.questions.map((elem, i) =>
        <div key={Math.random()} className="questionBlockVarient">
-         <div className="divQuestionBlockNumber">
-          <p className="questionBlockNumber">{(i + 1) + "."}</p>
-         </div>
+         <div className="QuestionBlockNumber">Вопрос №{(i + 1) + "."}</div>
          <QuestionBlock className="QuestionBlock" blockNumber={i + 1} data={elem} dataChange={this.handleDataChange} />
        </div>
     )
@@ -36,22 +33,20 @@ class PassTest extends Component {
     let questions = test.questions;
     let amount = questions.length;
     let right = this.state.right;
-    let rightAmount = right.filter(x => x===1).length;
+    let rightAmount = right.filter(x => x === 1).length;
 
     alert("Вы ответили правильно на " + rightAmount + " ответов из " + amount);
     this.props.back();
   }
 
   render() {
-    let right = this.state.right;
-
     return (
       <div className="PassTest">
-        <p className="testName">{this.state.test.name}</p>
-        <div className="questions">
+        <p className="PassTest__testName">{this.state.test.name}</p>
+        <div className="PassTest__questions">
           {this.QuestionBlockVarients()}
         </div>
-        <button className="finishBtn" onClick={this.handleFinishBtn}>Готово</button>
+        <button className="button PassTest__button finishBtn button_style_yellow" onClick={this.handleFinishBtn}>Готово</button>
       </div>
     );
   }

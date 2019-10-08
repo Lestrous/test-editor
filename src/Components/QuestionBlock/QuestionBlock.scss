@@ -1,0 +1,21 @@
+.questionBlock {
+  width: 100%;
+}
+
+.questionBlock .varient {
+  margin-bottom: 10px;
+}
+
+.questionBlock .varient__radio,
+.questionBlock .varient__checkbox {
+  transform: translateY(24%);
+}
+
+.blockQuestion__text {
+  margin-bottom: 10px;
+  overflow-y: auto;
+}
+
+.varient__answer_text {
+  display: inline-block;
+}

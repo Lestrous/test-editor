@@ -1,0 +1,24 @@
+.PassTest__testName {
+  font-size: 40px;
+  font-weight: 500;
+  margin-bottom: 30px;
+  color: $blue;
+}
+
+.PassTest__questions {
+  & .questionBlockVarient:last-of-type {
+    border-bottom: none;
+  }
+}
+
+.questionBlockVarient {
+  width: 100%;
+}
+
+.QuestionBlockNumber {
+  font-weight: 600;
+}
+
+.PassTest__button {
+  margin-bottom: 70px;
+}

@@ -1,0 +1,18 @@
+// миксин для центрования элементов в спрайте
+@mixin sprite-center-position($sprite) {
+  $sprite-offset-x: nth($sprite, 3);
+  $sprite-offset-y: nth($sprite, 4);
+  $sprite-width: nth($sprite, 5);
+  $sprite-height: nth($sprite, 6);
+  background-position: ($sprite-offset-x + ($sprite-elem-width - $sprite-width) / 2) ($sprite-offset-y + ($sprite-elem-height - $sprite-height) / 2);
+}
+
+@mixin box-shadow {
+  box-shadow: 2px 4px 20px #46464616;
+
+  &:hover,
+  &:active,
+  &:focus {
+    box-shadow: 2px 4px 20px #46464648;
+  }
+}

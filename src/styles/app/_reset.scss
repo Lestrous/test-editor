@@ -1,0 +1,36 @@
+* {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+	font-size: 1em;
+	font-weight: normal;
+  outline: none;
+}
+
+.link {
+	text-decoration: none;
+	color: #000;
+}
+
+/* buttons */
+.button {
+	display: block;
+	cursor: pointer;
+	user-select: none;
+	border: none;
+	background-color: transparent;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.ul {
+	display: flex;
+	justify-content: space-between;
+	list-style-type: none;
+	font-size: 0px;
+}
+
+.li {
+	display: inline-block;
+	font-size: 1rem;
+}

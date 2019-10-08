@@ -1,5 +1,4 @@
 import React, { Component } from "react";
-import "./AddQuestionBlock.css";
 
 class AddQuestionBlock extends Component {
   constructor(props) {
@@ -17,10 +16,15 @@ class AddQuestionBlock extends Component {
   }
 
   handleAddQuestionBlockBtn() {
+    let finishBtn = document.querySelector('#finishBtn');
+    finishBtn.classList.add('not-activeBtn');
     this.setState({ state: "ChooseTypeOfQuestionBlock" });
   }
 
   handleCreateQuestionBlockBtn() {
+    let finishBtn = document.querySelector('#finishBtn');
+    finishBtn.classList.remove('not-activeBtn');
+
     let form = document.forms[0];
     let select = form.elements.QuestionBlockType;
     let option;
@@ -37,6 +41,8 @@ class AddQuestionBlock extends Component {
   }
 
   handleCancelQuestionBlockBtn() {
+    let finishBtn = document.querySelector('#finishBtn');
+    finishBtn.classList.remove('not-activeBtn');
     this.setState({ state: "AddQuestionBlock" });
   }
 
@@ -47,7 +53,7 @@ class AddQuestionBlock extends Component {
       case "AddQuestionBlock":
         return (
           <div className="AddQuestionBlock">
-            <button className="AddQuestionBlockBtn" onClick={this.handleAddQuestionBlockBtn}>Добавить вопрос</button>
+            <button className="button AddQuestionBlockBtn button_style_blue" onClick={this.handleAddQuestionBlockBtn}>Добавить вопрос</button>
           </div>
         );
         break;
@@ -55,14 +61,16 @@ class AddQuestionBlock extends Component {
       case "ChooseTypeOfQuestionBlock":
         return (
           <form className="ChooseTypeOfQuestionBlock" onSubmit={this.handleCreateQuestionBlockBtn}>
-            <button className="CancelQuestionBlockBtn" onClick={this.handleCancelQuestionBlockBtn}>Отмена</button>
-            <select name="QuestionBlockType" className="QuestionBlockType">
-              <option value="radio">Один вариант ответа</option>
-              <option value="checkbox">Один или несколько вариантов ответа</option>
-              <option value="text">Свободный тестовый ответ</option>
-              <option value="number">Числовой ответ</option>
-            </select>
-            <input type="submit" className="CreareQuestionBlockBtn" value="Создать вопрос"/>
+            <div className="QuestionBlockType__inner">
+              <select name="QuestionBlockType" className="QuestionBlockType">
+                <option value="radio">Один вариант ответа</option>
+                <option value="checkbox">Один или несколько вариантов ответа</option>
+                <option value="text">Свободный тестовый ответ</option>
+                <option value="number">Числовой ответ</option>
+              </select>
+            </div>
+            <button className="button CancelQuestionBlockBtn button_style_blue" onClick={this.handleCancelQuestionBlockBtn}>Отмена</button>
+            <input className="button CreateQuestionBlockBtn button_style_yellow" type="submit" value="Создать вопрос"/>
           </form>
         );
         break;

@@ -1,0 +1,18 @@
+.button_style_blue {
+  width: 280px;
+  height: 66px;
+  border-radius: 15px;
+  background-color: $blue;
+  color: #fff;
+  font-weight: 600;
+  @include box-shadow;
+}
+
+.button_style_yellow {
+  width: 280px;
+  height: 66px;
+  border-radius: 15px;
+  background-color: $yellow;
+  font-weight: 600;
+  @include box-shadow;
+}

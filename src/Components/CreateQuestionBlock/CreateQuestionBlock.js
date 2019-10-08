@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import './CreateQuestionBlock.css';
 
 class CreateQuestionBlock extends Component {
   constructor(props) {
@@ -20,7 +19,12 @@ class CreateQuestionBlock extends Component {
     this.handleQuestionChange = this.handleQuestionChange.bind(this);
     this.handleCheck = this.handleCheck.bind(this);
     this.handleDataChange = this.handleDataChange.bind(this);
+    this.removeQuestionBlock = this.removeQuestionBlock.bind(this);
     }
+  }
+
+  removeQuestionBlock() {
+    this.props.removeQuestionBlock();
   }
 
   handleDataChange() {
@@ -102,29 +106,33 @@ class CreateQuestionBlock extends Component {
       case "radio":
         return this.state.varients.map((el, i) =>
            <div key={i} className="varient">
-            <p className="varientNumber">{(i + 1) + "."}</p>
-            <input type="radio" value={"" + i} name={this.props.blockNumber}  checked={this.state.answer.indexOf(i.toString()) !== -1 ? true : false} onChange={this.handleCheck.bind(this, i)} />
-            <input type="text" placeholder="Вариант ответа" value={el||''} onChange={this.handleChange.bind(this, i)} />
-            <input type="button" value="Удалить" onClick={this.removeVarient.bind(this, i)} />
+            <p className="varient__number">{i + 1}</p>
+            <input className="varient__radio" type="radio" value={"" + i} name={this.props.blockNumber}  checked={this.state.answer.indexOf(i.toString()) !== -1 ? true : false} onChange={this.handleCheck.bind(this, i)} />
+            <div className="varient__answer_item">
+              <input className="varient__text" type="text" placeholder="Вариант ответа" value={el||''} onChange={this.handleChange.bind(this, i)} />
+              <button className="button varient__button button_style_delete_varient" onClick={this.removeVarient.bind(this, i)}></button>
+            </div>
            </div>
         )
         break;
 
       case "checkbox":
         return this.state.varients.map((el, i) =>
-           <div key={i} className="varient">
-            <p className="varientNumber">{(i + 1) + "."}</p>
-            <input type="checkbox" value={el||""} name={this.props.blockNumber} checked={this.state.answer.indexOf(i.toString()) !== -1 ? true : false} onChange={this.handleCheck.bind(this, i)} />
-            <input type="text" placeholder="Вариант ответа" value={el||''} onChange={this.handleChange.bind(this, i)} />
-            <input type="button" value="Удалить" onClick={this.removeVarient.bind(this, i)} />
-           </div>
+          <div key={i} className="varient">
+            <p className="varient__number">{i + 1}</p>
+            <input className="varient__checkbox" type="checkbox" value={el||""} name={this.props.blockNumber} checked={this.state.answer.indexOf(i.toString()) !== -1 ? true : false} onChange={this.handleCheck.bind(this, i)} />
+            <div className="varient__answer_item">
+              <input className="varient__text" type="text" placeholder="Вариант ответа" value={el||''} onChange={this.handleChange.bind(this, i)} />
+              <button className="button varient__button button_style_delete_varient" onClick={this.removeVarient.bind(this, i)}></button>
+            </div>
+          </div>
         )
         break;
 
       case "text":
         return (
            <div className="varient">
-            <input type="text" defaultValue={this.state.answer[0]} placeholder="Ответ" onChange={this.handleChange.bind(this, 0)} />
+            <input className="varient__text" type="text" defaultValue={this.state.answer[0]} placeholder="Ответ" onChange={this.handleChange.bind(this, 0)} />
            </div>
         )
         break;
@@ -132,7 +140,7 @@ class CreateQuestionBlock extends Component {
       case "number":
         return (
            <div className="varient">
-            <input type="number"  defaultValue={parseInt(this.state.answer[0]) || 0} onChange={this.handleChange.bind(this, 0)} />
+            <input className="varient__text" type="number" defaultValue={parseInt(this.state.answer[0]) || 0} onChange={this.handleChange.bind(this, 0)} />
            </div>
         )
         break;
@@ -149,17 +157,19 @@ class CreateQuestionBlock extends Component {
     if (type === "radio" || type === "checkbox") {
       return (
         <div className="createQuestionBlock">
-          <input id={"Question" + this.props.blockNumber} type="text" defaultValue={this.state.question} placeholder="Вопрос" onChange={this.handleQuestionChange.bind(this, this.props.blockNumber)} />
+          <button className="button deleteQuestionBlockBtn" onClick={this.removeQuestionBlock.bind(this)} />
+          <input id={"Question" + this.props.blockNumber} className="createQuestionBlock__question" type="text" defaultValue={this.state.question} placeholder="Вопрос" onChange={this.handleQuestionChange.bind(this, this.props.blockNumber)} />
           <div className="answerVarients">
             {this.answerVarients(type)}
           </div>
-          <input type="button" value="Добавить вариант" onClick={this.addVarient.bind(this, type)} />
+          <button className="button createQuestionBlock__button button_style_blue" onClick={this.addVarient.bind(this, type)} >+ Добавить вариант</button>
         </div>
       );
     } else {
       return (
         <div className="createQuestionBlock">
-          <input id={"Question" + this.props.blockNumber} type="text" defaultValue={this.state.question} placeholder="Вопрос" onChange={this.handleQuestionChange.bind(this, this.props.blockNumber)} />
+          <button className="button deleteQuestionBlockBtn" onClick={this.removeQuestionBlock.bind(this)} />
+          <input id={"Question" + this.props.blockNumber} className="createQuestionBlock__question" type="text" defaultValue={this.state.question} placeholder="Вопрос" onChange={this.handleQuestionChange.bind(this, this.props.blockNumber)} />
           <div className="answerVarients">
             {this.answerVarients(type)}
           </div>

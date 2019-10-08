@@ -1,5 +1,4 @@
 import React, { Component } from "react";
-import "./CreateOrEditTest.css";
 import CreateQuestionBlock from "../CreateQuestionBlock/CreateQuestionBlock";
 import AddQuestionBlock from "../AddQuestionBlock/AddQuestionBlock";
 
@@ -61,11 +60,8 @@ class CreateOrEditTest extends Component {
   QuestionBlockVarients() {
     return this.state.test.questions.map((elem, i) =>
        <div key={Math.random()} className="questionBlockVarient">
-         <div className="divQuestionBlockNumber">
-          <p className="questionBlockNumber">{(i + 1) + "."}</p>
-         </div>
-         <CreateQuestionBlock className="CreateQuestionBlock" blockNumber={i + 1} data={elem} dataChange={this.handleDataChange} />
-         <input type="button" value="Удалить" className="deleteQuestionBlockBtn" onClick={this.removeQuestionBlock.bind(this, i)} />
+        <div className="QuestionBlockNumber">Вопрос №{(i + 1) + "."}</div>
+        <CreateQuestionBlock className="CreateQuestionBlock" blockNumber={i + 1} data={elem} dataChange={this.handleDataChange} removeQuestionBlock={this.removeQuestionBlock.bind(this, i)} />
        </div>
     )
   }
@@ -73,7 +69,6 @@ class CreateOrEditTest extends Component {
   handleFinishBtn() {
     let test = this.state.test;
     let questions = test.questions;
-    let full = true;
 
     let username = sessionStorage.getItem("currentUser");
     let testNames = JSON.parse(localStorage.getItem(username)).tests;
@@ -82,49 +77,55 @@ class CreateOrEditTest extends Component {
     let oldName = this.state.oldName;
     let sameName = oldName === test.name;
 
-    if (test.name) {
-      if (newName || sameName) {
-        if (questions.length !== 0) {
-          for (let i = 0; i < questions.length; i++) {
-            let condition = questions[i].question && questions[i].varients.length !== 0 && questions[i].answer.length !== 0;
-            if (!condition) {
-              full = false;
-              alert("Вы заполнили не все данные");
-              break;
-            }
-          }
-
-          if (full) {
-            let state = this.state.state;
-            if (state === "CreateTest") {
-              this.props.createTest(test);
-            } else if (state === "EditTest") {
-              this.props.editTest(test, oldName);
-            }
-            this.props.back();
-          }
-        } else {
-          alert("В тесте нет ни одного вопроса");
-        }
-      }
-      else {
-        alert("Тест с таким именем уже существует");
-      }
-    }
-    else {
+    if (!test.name) {
       alert("Вы не дали название тесту");
+      return;
     }
+
+    if (!newName && !sameName) {
+      alert("Тест с таким именем уже существует");
+      return;
+    }
+
+    if (questions.length === 0) {
+      alert("В тесте нет ни одного вопроса");
+      return;
+    }
+    
+    for (let i = 0; i < questions.length; i++) {
+      let condition = questions[i].question && 
+                      questions[i].varients.length !== 0 && 
+                      questions[i].answer.length !== 0;
+      if (!condition) {
+        alert("Вы заполнили не все данные");
+        return;
+      }
+    }
+
+    let state = this.state.state;
+    if (state === "CreateTest") {
+      this.props.createTest(test);
+    } else if (state === "EditTest") {
+      this.props.editTest(test, oldName);
+    }
+    this.props.back();
   }
+
+  
 
   render() {
     return (
       <div className="CreateOrEditTest">
-        <input className="testName" id="testName" placeholder="Название теста" defaultValue={this.state.test.name} onChange={this.handleTestNameChange.bind(this)} />
+        <h2 className="heading heading_level_2">Создание теста</h2>
+        <label>
+          <p className="CreateOrEditTest__description">Введите название вашего теста:</p>
+          <input className="testNameCreation" id="testName" defaultValue={this.state.test.name} onChange={this.handleTestNameChange.bind(this)} />
+        </label>
         <div className="questions">
           {this.QuestionBlockVarients()}
         </div>
         <AddQuestionBlock submitBtn={this.addQuestionBlock}/>
-        <button className="finishBtn" onClick={this.handleFinishBtn}>Готово</button>
+        <button id="finishBtn" className="button finishBtn button_style_yellow" onClick={this.handleFinishBtn}>Готово</button>
       </div>
     );
   }

@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import './QuestionBlock.css';
 
 class QuestionBlock extends Component {
   constructor(props) {
@@ -47,10 +46,9 @@ class QuestionBlock extends Component {
       case "radio":
         return this.state.varients.map((elem, i) =>
            <div key={i} className="varient">
-            <p className="varientNumber">{(i + 1) + "."}</p>
             <label>
-              <input type="radio" value={"" + i} name={this.props.blockNumber} onChange={this.handleChange.bind(this, i)} />
-              <p>{elem}</p>
+              <input className="varient__radio" type="radio" value={"" + i} name={this.props.blockNumber} onChange={this.handleChange.bind(this, i)} />
+              <p className="varient__answer_text">{elem}</p>
             </label>
            </div>
         )
@@ -59,10 +57,9 @@ class QuestionBlock extends Component {
       case "checkbox":
         return this.state.varients.map((elem, i) =>
            <div key={i} className="varient">
-            <p className="varientNumber">{(i + 1) + "."}</p>
             <label>
-              <input type="checkbox" value={elem||""} name={this.props.blockNumber} onChange={this.handleChange.bind(this, i)} />
-              <p>{elem}</p>
+              <input className="varient__checkbox" type="checkbox" value={elem||""} name={this.props.blockNumber} onChange={this.handleChange.bind(this, i)} />
+              <p className="varient__answer_text">{elem}</p>
             </label>
            </div>
         )
@@ -71,7 +68,7 @@ class QuestionBlock extends Component {
       case "text":
         return (
            <div className="varient">
-            <input type="text" placeholder="Ответ" onChange={this.handleChange.bind(this, 0)} />
+            <input className="varient__text" type="text" placeholder="Ответ" onChange={this.handleChange.bind(this, 0)} />
            </div>
         )
         break;
@@ -79,7 +76,7 @@ class QuestionBlock extends Component {
       case "number":
         return (
            <div className="varient">
-            <input type="number"  defaultValue="0" onChange={this.handleChange.bind(this, 0)} />
+            <input className="varient__text" type="number" defaultValue="0" onChange={this.handleChange.bind(this, 0)} />
            </div>
         )
         break;
@@ -91,7 +88,7 @@ class QuestionBlock extends Component {
 
     return (
       <div className="questionBlock">
-        <p className="blockQuestion">{this.state.question}</p>
+        <p className="blockQuestion__text">{this.state.question}</p>
         <div className="answerVarients">
           {this.answerVarients(type)}
         </div>

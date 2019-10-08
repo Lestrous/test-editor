@@ -1,14 +1,19 @@
 import React, { Component } from "react";
-import "./Header.css";
 
 class Header extends Component {
   constructor(props) {
     super(props);
+
     this.handleExitBtn = this.handleExitBtn.bind(this);
+    this.handleLogoBtn = this.handleLogoBtn.bind(this);
   }
 
   handleExitBtn() {
     this.props.handleLogout();
+  }
+
+  handleLogoBtn() {
+    this.props.handleLogoBtn();
   }
 
   render() {
@@ -18,29 +23,21 @@ class Header extends Component {
     switch (userState) {
       case "NotLoggedIn":
         return (
-          <div className="header">
-            <div className="logo">
-              <p>LogoPic</p>
-            </div>
-            <div className="appName">
-              <p>TestEditorPro 1.1</p>
-            </div>
+          <div className="header page__header">
+            <button className="button logo header__logo" onClick={this.handleLogoBtn}></button>
+            <div className="appName header__appName">TestTest</div>
           </div>
         );
         break;
 
       case "LoggedIn":
         return (
-          <div className="header">
-            <div className="logo">
-              <p>NiceLogoPic</p>
-            </div>
-            <div className="appName">
-              <p>TestEditorPro 1.1</p>
-            </div>
-            <div className="userAcc">
-              <p className="username">{username}</p>
-              <button className="exitBtn" onClick={this.handleExitBtn}>Выход</button>
+          <div className="header page__header">
+           <button className="button logo header__logo" onClick={this.handleLogoBtn}></button>
+            <div className="appName header__appName">TestTest</div>
+            <div className="userAccount header__userAccount">
+              <p className="username header__username">{username}</p>
+              <button className="button header__button exitBtn" onClick={this.handleExitBtn}>Выход</button>
             </div>
           </div>
         );

@@ -1,0 +1,27 @@
+@import '../fonts/Gilroy/*.scss';
+@import 'app/*.scss';
+@import 'app/elements/*';
+
+* {
+	font-family: Gilroy, sans-serif;
+}
+
+html, body {
+	scroll-behavior: smooth;
+}
+
+.page {
+	min-width: 320px;
+	min-height: calc(100vh - 100px);
+  font-size: 24px;
+	color: $black;
+}
+
+.fixed-container {
+	max-width: 1100px;
+	margin: 0 auto;
+}
+
+
+@import 'app/blocks/*';
+@import '../Components/**/*.scss';
